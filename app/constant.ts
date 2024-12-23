@@ -1,5 +1,5 @@
-export const OWNER = "ChatGPTNextWeb";
-export const REPO = "ChatGPT-Next-Web";
+export const OWNER = "Dafeigy";
+export const REPO = "Hercules";
 export const REPO_URL = `https://github.com/${OWNER}/${REPO}`;
 export const PLUGINS_REPO_URL = `https://github.com/${OWNER}/NextChat-Awesome-Plugins`;
 export const ISSUE_URL = `https://github.com/${OWNER}/${REPO}/issues`;
@@ -119,6 +119,7 @@ export enum ServiceProvider {
   Iflytek = "Iflytek",
   XAI = "XAI",
   ChatGLM = "ChatGLM",
+  SiliconFlow = "SiliconFlow",
 }
 
 // Google API safety settings, see https://ai.google.dev/gemini-api/docs/safety-settings
@@ -143,6 +144,7 @@ export enum ModelProvider {
   Iflytek = "Iflytek",
   XAI = "XAI",
   ChatGLM = "ChatGLM",
+  SiliconFlow = "SiliconFlow",
 }
 
 export const Stability = {
@@ -245,7 +247,7 @@ export const DEFAULT_INPUT_TEMPLATE = `{{input}}`; // input / time / model / lan
 // Latex block: $$e=mc^2$$
 // `;
 export const DEFAULT_SYSTEM_TEMPLATE = `
-You are ChatGPT, a large language model trained by {{ServiceProvider}}.
+You are {{model}}, a large language model trained by {{ServiceProvider}}.
 Knowledge cutoff: {{cutoff}}
 Current model: {{model}}
 Current time: {{time}}
@@ -433,8 +435,26 @@ const chatglmModels = [
   "glm-4-flash",
 ];
 
+const siliconFlowModels = [
+  "Qwen/Qwen2.5-Coder-7B-Instruct",
+  "Qwen/QwQ-32B-Preview",
+  "Qwen/Qwen2.5-72B-Instruct",
+  "deepseek-ai/DeepSeek-V2.5",
+];
+
 let seq = 1000; // 内置的模型序号生成器从1000开始
 export const DEFAULT_MODELS = [
+  ...siliconFlowModels.map((name) => ({
+    name,
+    available: true,
+    sorted: seq++, // Global sequence sort(index)
+    provider: {
+      id: "siliconflow",
+      providerName: "SiliconFlow",
+      providerType: "openai",
+      sorted: 0, // 这里是固定的，确保顺序与之前内置的版本一致
+    },
+  })),
   ...openaiModels.map((name) => ({
     name,
     available: true,
