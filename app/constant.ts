@@ -119,7 +119,6 @@ export enum ServiceProvider {
   Iflytek = "Iflytek",
   XAI = "XAI",
   ChatGLM = "ChatGLM",
-  SiliconFlow = "SiliconFlow",
 }
 
 // Google API safety settings, see https://ai.google.dev/gemini-api/docs/safety-settings
@@ -144,7 +143,6 @@ export enum ModelProvider {
   Iflytek = "Iflytek",
   XAI = "XAI",
   ChatGLM = "ChatGLM",
-  SiliconFlow = "SiliconFlow",
 }
 
 export const Stability = {
@@ -305,6 +303,7 @@ export const VISION_MODEL_REGEXES = [
   /qwen2-vl/,
   /gpt-4-turbo(?!.*preview)/, // Matches "gpt-4-turbo" but not "gpt-4-turbo-preview"
   /^dall-e-3$/, // Matches exactly "dall-e-3"
+  /vl/i,
 ];
 
 export const EXCLUDE_VISION_MODEL_REGEXES = [/claude-3-5-haiku-20241022/];
@@ -435,26 +434,8 @@ const chatglmModels = [
   "glm-4-flash",
 ];
 
-const siliconFlowModels = [
-  "Qwen/Qwen2.5-Coder-7B-Instruct",
-  "Qwen/QwQ-32B-Preview",
-  "Qwen/Qwen2.5-72B-Instruct",
-  "deepseek-ai/DeepSeek-V2.5",
-];
-
 let seq = 1000; // 内置的模型序号生成器从1000开始
 export const DEFAULT_MODELS = [
-  ...siliconFlowModels.map((name) => ({
-    name,
-    available: true,
-    sorted: seq++, // Global sequence sort(index)
-    provider: {
-      id: "siliconflow",
-      providerName: "SiliconFlow",
-      providerType: "openai",
-      sorted: 0, // 这里是固定的，确保顺序与之前内置的版本一致
-    },
-  })),
   ...openaiModels.map((name) => ({
     name,
     available: true,
