@@ -10,10 +10,10 @@ import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 const serverConfig = getServerSideConfig();
 
 export const metadata: Metadata = {
-  title: "Prism",
-  description: "Your personal ChatGPT Chat Bot.",
+  title: "（๑ • ‿ • ๑ ）",
+  description: "一个面向普通用户的LLM三方客户端",
   appleWebApp: {
-    title: "Hercules",
+    title: "（๑ • ‿ • ๑ ）",
     statusBarStyle: "default",
   },
 };

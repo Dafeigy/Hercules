@@ -2,6 +2,7 @@
 import { ChatMessage, useAppConfig, useChatStore } from "../store";
 import Locale from "../locales";
 import styles from "./exporter.module.scss";
+
 import {
   List,
   ListItem,
@@ -23,17 +24,14 @@ import CopyIcon from "../icons/copy.svg";
 import LoadingIcon from "../icons/three-dots.svg";
 import ChatGptIcon from "../icons/chatgpt.png";
 import ShareIcon from "../icons/share.svg";
-import BotIcon from "../icons/bot.png";
 
 import DownloadIcon from "../icons/download.svg";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { MessageSelector, useMessageSelector } from "./message-selector";
-import { Avatar } from "./emoji";
 import dynamic from "next/dynamic";
 import NextImage from "next/image";
 
 import { toBlob, toPng } from "html-to-image";
-import { DEFAULT_MASK_AVATAR } from "../store/mask";
 
 import { prettyObject } from "../utils/format";
 import { EXPORT_MESSAGE_CLASS_NAME } from "../constant";
@@ -41,6 +39,12 @@ import { getClientConfig } from "../config/client";
 import { type ClientApi, getClientApi } from "../client/api";
 import { getMessageTextContent } from "../utils";
 import clsx from "clsx";
+
+export enum Theme {
+  Auto = "auto",
+  Dark = "dark",
+  Light = "light",
+}
 
 const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
   loading: () => <LoadingIcon />,
@@ -407,21 +411,21 @@ export function PreviewActions(props: {
   );
 }
 
-function ExportAvatar(props: { avatar: string }) {
-  if (props.avatar === DEFAULT_MASK_AVATAR) {
-    return (
-      <img
-        src={BotIcon.src}
-        width={30}
-        height={30}
-        alt="bot"
-        className="user-avatar"
-      />
-    );
-  }
+// function ExportAvatar(props: { avatar: string }) {
+//   if (props.avatar === DEFAULT_MASK_AVATAR) {
+//     return (
+//       <img
+//         src={BotIcon.src}
+//         width={30}
+//         height={30}
+//         alt="bot"
+//         className="user-avatar"
+//       />
+//     );
+//   }
 
-  return <Avatar avatar={props.avatar} />;
-}
+//   return <Avatar avatar={props.avatar} />;
+// }
 
 export function ImagePreviewer(props: {
   messages: ChatMessage[];
@@ -431,7 +435,7 @@ export function ImagePreviewer(props: {
   const session = chatStore.currentSession();
   const mask = session.mask;
   const config = useAppConfig();
-
+  const theme = config.theme;
   const previewRef = useRef<HTMLDivElement>(null);
 
   const copy = () => {
@@ -541,14 +545,17 @@ export function ImagePreviewer(props: {
           </div>
 
           <div>
-            <div className={styles["main-title"]}>NextChat</div>
-            <div className={styles["sub-title"]}>
-              github.com/ChatGPTNextWeb/ChatGPT-Next-Web
-            </div>
+            <div className={styles["main-title"]}>(๑ • ‿ • ๑ )</div>
+            <div className={styles["sub-title"]}></div>
             <div className={styles["icons"]}>
-              <ExportAvatar avatar={config.avatar} />
+              <div className="user-avatar-none"></div>
               <span className={styles["icon-space"]}>&</span>
-              <ExportAvatar avatar={mask.avatar} />
+              <div
+                className={
+                  theme === Theme.Dark ? "bot-avatar-dark" : "bot-avatar-light"
+                }
+              ></div>{" "}
+              &nbsp;的聊天
             </div>
           </div>
           <div>
@@ -576,9 +583,18 @@ export function ImagePreviewer(props: {
               key={i}
             >
               <div className={styles["avatar"]}>
-                <ExportAvatar
+                {/* <ExportAvatar
                   avatar={m.role === "user" ? config.avatar : mask.avatar}
-                />
+                /> */}
+                <div
+                  className={
+                    m.role === "user"
+                      ? "user-avatar-none"
+                      : theme === Theme.Dark
+                      ? "bot-avatar-dark"
+                      : "bot-avatar-light"
+                  }
+                ></div>
               </div>
 
               <div className={styles["body"]}>

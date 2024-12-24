@@ -119,6 +119,8 @@ export enum ServiceProvider {
   Iflytek = "Iflytek",
   XAI = "XAI",
   ChatGLM = "ChatGLM",
+  Cybersh1t = "Cybersh1t",
+  SiliconFlow = "SiliconFlow",
 }
 
 // Google API safety settings, see https://ai.google.dev/gemini-api/docs/safety-settings

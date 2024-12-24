@@ -286,6 +286,12 @@ export function showPlugins(provider: ServiceProvider, model: string) {
   if (provider == ServiceProvider.Google && !model.includes("vision")) {
     return true;
   }
+  if (
+    provider == ServiceProvider.SiliconFlow &&
+    model.includes("Qwen/Qwen2.5-72B-Instruct")
+  ) {
+    return true;
+  }
   return false;
 }
 

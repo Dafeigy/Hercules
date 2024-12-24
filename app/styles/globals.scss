@@ -411,6 +411,33 @@ pre {
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 
+.bot-avatar-light{
+  height: 32px;
+  min-height: 32px;
+  width: 32px;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: var(--card-shadow);
+  border-radius: 5px;
+  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+}
+
+.bot-avatar-dark{
+  height: 32px;
+  min-height: 32px;
+  width: 32px;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: var(--card-shadow);
+  border-radius: 5px;
+  background-image: linear-gradient(#84fab0 0%, #8fd3f4 100%);
+}
 .one-line {
   white-space: nowrap;
   overflow: hidden;

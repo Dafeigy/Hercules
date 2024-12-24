@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-import { ChatMessage, useAppConfig, useChatStore } from "../store";
+import { ChatMessage, Theme, useAppConfig, useChatStore } from "../store";
 import { Updater } from "../typing";
 import { IconButton } from "./button";
-import { Avatar } from "./emoji";
-import { MaskAvatar } from "./mask";
 import Locale from "../locales";
 
 import styles from "./message-selector.module.scss";
@@ -96,7 +94,7 @@ export function MessageSelector(props: {
   );
   const messageCount = messages.length;
   const config = useAppConfig();
-
+  const theme = config.theme;
   const [searchInput, setSearchInput] = useState("");
   const [searchIds, setSearchIds] = useState(new Set<string>());
   const isInSearchResult = (id: string) => {
@@ -209,12 +207,20 @@ export function MessageSelector(props: {
             >
               <div className={styles["avatar"]}>
                 {m.role === "user" ? (
-                  <Avatar avatar={config.avatar}></Avatar>
+                  // <Avatar avatar={config.avatar}></Avatar>
+                  <div className="user-avatar-none"></div>
                 ) : (
-                  <MaskAvatar
-                    avatar={session.mask.avatar}
-                    model={m.model || session.mask.modelConfig.model}
-                  />
+                  // <MaskAvatar
+                  //   avatar={session.mask.avatar}
+                  //   model={m.model || session.mask.modelConfig.model}
+                  // />
+                  <div
+                    className={
+                      theme === Theme.Dark
+                        ? "bot-avatar-dark"
+                        : "bot-avatar-light"
+                    }
+                  ></div>
                 )}
               </div>
               <div className={styles["body"]}>
