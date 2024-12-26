@@ -5,6 +5,11 @@
     "schema": "https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat-Awesome-Plugins/main/plugins/dalle/openapi.json"
   },
   {
+    "id": "QWeather",
+    "name": "RealtimeWeather",
+    "schema": "https://raw.githubusercontent.com/Dafeigy/Qweather-Prism-Plugin/refs/heads/main/apis/QWeather.json"
+  },
+  {
     "id": "arxivsearch",
     "name": "ArxivSearch",
     "schema": "https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat-Awesome-Plugins/main/plugins/arxivsearch/openapi.json"
