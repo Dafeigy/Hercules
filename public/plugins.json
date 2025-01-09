@@ -1,22 +1,12 @@
 [
   {
-    "id": "dalle3",
-    "name": "Dalle3",
-    "schema": "https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat-Awesome-Plugins/main/plugins/dalle/openapi.json"
-  },
-  {
     "id": "QWeather",
     "name": "RealtimeWeather",
-    "schema": "https://raw.githubusercontent.com/Dafeigy/Qweather-Prism-Plugin/refs/heads/main/apis/QWeather.json"
+    "schema": "https://gitee.com/dafeigy/Prism-Plugins/raw/main/apis/QWeather.json"
   },
   {
     "id": "arxivsearch",
     "name": "ArxivSearch",
-    "schema": "https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat-Awesome-Plugins/main/plugins/arxivsearch/openapi.json"
-  },
-  {
-    "id": "duckduckgolite",
-    "name": "DuckDuckGoLiteSearch",
-    "schema": "https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat-Awesome-Plugins/main/plugins/duckduckgolite/openapi.json"
+    "schema": "https://gitee.com/dafeigy/Prism-Plugins/raw/main/apis/ArxivSearch.json"
   }
 ]
