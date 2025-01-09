@@ -1,8 +1,8 @@
 [
   {
-    "id": "dalle3",
-    "name": "Dalle3",
-    "schema": "https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat-Awesome-Plugins/main/plugins/dalle/openapi.json"
+    "id": "flux",
+    "name": "Flux.1",
+    "schema": "https://raw.githubusercontent.com/Dafeigy/Prism-Plugins/refs/heads/main/apis/Fluxdev.json"
   },
   {
     "id": "QWeather",
