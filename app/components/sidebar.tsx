@@ -228,7 +228,7 @@ export function SideBar(props: { className?: string }) {
       {...props}
     >
       <SideBarHeader
-        title="（๑ • ‿ • ๑ ）"
+        title="Laked23"
         subTitle="Wish it help you suffiently"
         logo={<ChatGptIcon />}
         shouldNarrow={shouldNarrow}
